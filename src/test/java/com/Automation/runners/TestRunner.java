@@ -1,15 +1,21 @@
-package automation.runners;
+package com.Automation.runners;
 
-import cucumber.api.CucumberOptions;
-import cucumber.api.junit.Cucumber;
+import io.cucumber.junit.Cucumber;
+import io.cucumber.junit.CucumberOptions;
 import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        features = "automation/features",
+        features = "src/test/resources/features/",
         tags = "@all",
-        glue = "automation/stepdefinitions",
-        plugin = {"pretty"}
+        glue = "com.Automation.stepdefinitions",
+        plugin = {
+                "pretty",
+                "html:target/cucumber-reports/cucumber-pretty.html",
+                "json:target/cucumber-reports/CucumberTestReport.json",
+                "timeline:target/test-output-thread/"
+        },
+        snippets = CucumberOptions.SnippetType.CAMELCASE
 )
 
 public class TestRunner {
