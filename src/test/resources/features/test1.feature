@@ -1,4 +1,5 @@
-@all
+#@all
+
 Feature: test feature
 
   Background:

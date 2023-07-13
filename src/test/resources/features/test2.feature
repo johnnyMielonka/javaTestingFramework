@@ -1,16 +1,9 @@
 @all
-Feature: test feature
+Feature: Scenarios feature file
 
-  Background:
-    Given Starting point
+  Scenario: Scenario Number One
+    Given Step from 'Scenario 1' in 'scenarios' feature file
 
-  Scenario Outline: Running scenario 1
-    When Continuation "<sequence>"
-    Then Finish
-    Examples:
-    |sequence|
-      |1  |
-      |2  |
-      |3  |
-      |4  |
+  Scenario: Scenario Number Two
+    Given Step from 'Scenario 2' in 'scenarios' feature file
 
