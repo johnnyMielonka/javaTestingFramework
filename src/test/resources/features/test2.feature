@@ -1,9 +1,15 @@
-@all
-Feature: Scenarios feature file
+@all @api
+Feature: Scenarios feature file #2
 
   Scenario: Scenario Number One
-    Given Step from 'Scenario 1' in 'scenarios' feature file
+    Given Starting point API
+    And Web Api get call
+    When Print response body
+    Then Verify response code is 200
 
-  Scenario: Scenario Number Two
-    Given Step from 'Scenario 2' in 'scenarios' feature file
 
+  Scenario: Negative Scenario Number One
+    Given Starting point API
+    And Web Api get call
+    When Print response body
+    Then Verify response code is 400
