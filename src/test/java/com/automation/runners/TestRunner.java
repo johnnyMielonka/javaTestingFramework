@@ -1,4 +1,4 @@
-package com.Automation.runners;
+package com.automation.runners;
 
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         features = "src/test/resources/features/",
         tags = "@all",
-        glue = "com.Automation.stepdefinitions",
+        glue = "com.automation.stepdefinitions",
         plugin = {
                 "pretty",
                 "html:target/cucumber-reports/cucumber-pretty.html",
