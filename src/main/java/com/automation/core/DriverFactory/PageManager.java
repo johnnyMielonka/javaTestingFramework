@@ -15,6 +15,7 @@ public class PageManager {
     }
 
     public void closeDriver() {
+        this.pageGenerator.driver.close();
         this.pageGenerator.driver.quit();
     }
 
