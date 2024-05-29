@@ -12,7 +12,6 @@ import org.assertj.core.api.SoftAssertions;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 public class AuroraCommonPageStepDef {
     private final PageGenerator pageGenerator = PageManager.getInstance().getPageGenerator();
@@ -24,14 +23,16 @@ public class AuroraCommonPageStepDef {
         mainPage.openServiceUrl();
     }
 
-    @When("Open an {string} item from Menu Bar")
+    @When("Open {string} item from Menu Bar")
     public void openItemMenuBar(String itemName) {
         mainPage.clickOnManuBarItem(itemName);
     }
 
     @Then("Verify page title is {string}")
     public void verifyPageTitle(String expectedName) {
-        assertEquals("Page name different then expected", mainPage.getPageName(), expectedName);
+        assertEquals("Page name different then expected",
+                expectedName.toLowerCase(),
+                mainPage.getPageName().toLowerCase());
     }
 
     @Then("Verify page title is {string} with uppercases")

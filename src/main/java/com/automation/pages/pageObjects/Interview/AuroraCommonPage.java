@@ -24,8 +24,7 @@ public class AuroraCommonPage extends BasePage {
     }
 
     public AuroraCommonPage clickOnManuBarItem(String elementName) {
-        super.waitForPageLoad();
-        super.click(driver.findElement(By.xpath(String.format(genericMenuBarItem, elementName))));
+        super.click(By.xpath(String.format(genericMenuBarItem, elementName)));
         return this;
     }
 

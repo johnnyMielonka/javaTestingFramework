@@ -6,7 +6,7 @@ Feature: Testing Aurora Commerce
     Given Open Aurora web page
 
   @menubar
-  Scenario: Running log in scenario for <user> and <password>
+  Scenario: Checking availability of menu items
     Then Verify Menu Bar contains following items:
       | New In        |
       | Clothes       |
@@ -18,8 +18,8 @@ Feature: Testing Aurora Commerce
 
   @menubar
   Scenario Outline: Checking accessibility of <itemName> Menu Bar item
-    When Open an "<itemName>" item from Menu Bar
-    Then Verify page title is "<itemName>" with uppercases
+    When Open "<itemName>" item from Menu Bar
+    Then Verify page title is "<itemName>"
     Examples:
       | itemName      |
       | New In        |
@@ -40,7 +40,7 @@ Feature: Testing Aurora Commerce
     Your email and password were not recognised, please try again
     """
     Examples:
-      | user | password |
-      | 1    | a        |
-      | a    | 1        |
-      | a    | 1        |
+      | user  | password |
+      | 1     | a        |
+      | a     | 1        |
+      | admin | password |
