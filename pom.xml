@@ -81,6 +81,7 @@
                 <version>2.22.0</version>
                 <configuration>
                     <systemPropertyVariables>
+                        <testEnv>auroracommerce</testEnv>
                     </systemPropertyVariables>
                     <parallel>methods</parallel>
                     <useUnlimitedThreads>true</useUnlimitedThreads>
