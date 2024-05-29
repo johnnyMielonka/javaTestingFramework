@@ -1,42 +1,36 @@
 package com.automation.pages.pageObjects.Interview;
 
 import com.automation.pages.BasePage;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.How;
 
 public class AuroraLoginPage extends BasePage {
-    @FindBy(how = How.XPATH, using = "//li[@class='template_nav_top_members']/a[text()='Login']")
-    private WebElement topBarLogin;
-    @FindBy(how = How.XPATH, using = "//input[@name='email_address' and @id='email_address']")
-    private WebElement inputEmailLogin;
-    @FindBy(how = How.XPATH, using = "//input[@name='password' and @id='password']")
-    private WebElement inputPassword;
-    @FindBy(how = How.XPATH, using = "//input[@type='submit' and @name='login']")
-    private WebElement btnLogin;
+    private final String topBarLogin = "//li[@class='template_nav_top_members']/a[text()='Login']";
+    private final String inputEmailLogin = "//input[@name='email_address' and @id='email_address']";
+    private final String inputPassword = "//input[@name='password' and @id='password']";
+    private final String btnLogin = "//input[@type='submit' and @name='login']";
 
     public AuroraLoginPage(WebDriver driver) {
         super(driver);
     }
 
     public AuroraLoginPage navigateToLoginPage() {
-        super.click(topBarLogin);
+        super.click(By.xpath(topBarLogin));
         return this;
     }
 
     public AuroraLoginPage setEmailForLogin(String textValue) {
-        super.writeText(inputEmailLogin, textValue);
+        super.writeText(By.xpath(inputEmailLogin), textValue);
         return this;
     }
 
     public AuroraLoginPage setPasswordForLogin(String textValue) {
-        super.writeText(inputPassword, textValue);
+        super.writeText(By.xpath(inputPassword), textValue);
         return this;
     }
 
     public AuroraLoginPage pressLogIn() {
-        super.click(btnLogin);
+        super.click(By.xpath(btnLogin));
         return this;
     }
 

@@ -43,12 +43,20 @@ public class BasePage extends PageGenerator {
 
     protected void click(By element) {
         this.waitForPageLoad();
-        element.clear();
-        element.sendKeys(textValue);
+        this.waitUntil().until(ExpectedConditions.elementToBeClickable(element));
+        driver.findElement(element).click();
     }
 
-    protected String getText(WebElement element){
+    protected void writeText(By element, String textValue) {
         this.waitForPageLoad();
+        this.waitUntil().until(ExpectedConditions.elementToBeClickable(element));
+        driver.findElement(element).clear();
+        driver.findElement(element).sendKeys(textValue);
+    }
+
+    protected String getText(WebElement element) {
+        this.waitForPageLoad();
+        this.waitUntil().until(ExpectedConditions.visibilityOf(element));
         return element.getText();
     }
 
