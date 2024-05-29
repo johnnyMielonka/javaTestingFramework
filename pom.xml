@@ -15,9 +15,9 @@
         <io-cucumber.version>7.13.0</io-cucumber.version>
         <junit.version>4.13.1</junit.version>
         <lombock.version>1.18.30</lombock.version>
-        <selenium.version>4.10.0</selenium.version>
+        <selenium.version>4.21.0</selenium.version>
         <rest-assured.version>5.3.1</rest-assured.version>
-        <webdrivermanager.version>LATEST</webdrivermanager.version>
+        <webdrivermanager.version>5.8.0</webdrivermanager.version>
         <assertj-core.version>3.24.2</assertj-core.version>
     </properties>
     <dependencies>
