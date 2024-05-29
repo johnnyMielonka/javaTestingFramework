@@ -28,6 +28,7 @@ public class DriverSupplier {
         options.addArguments("--verbose");
         options.addArguments("--no-sandbox");
         options.addArguments("--whitelisted-ips=''");
+        options.addArguments("--user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36");
 
         options.setUnhandledPromptBehaviour(UnexpectedAlertBehaviour.IGNORE);
         WebDriverManager.chromedriver().setup();
