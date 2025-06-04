@@ -1,9 +1,11 @@
 package com.automation.core.DriverFactory;
 
 import com.automation.pages.PageGenerator;
+import lombok.Getter;
 
+@Getter
 public class PageManager {
-    private static ThreadLocal<PageManager> INSTANCE = ThreadLocal.withInitial(PageManager::new);
+    private static final ThreadLocal<PageManager> INSTANCE = ThreadLocal.withInitial(PageManager::new);
     private PageGenerator pageGenerator;
 
     public static synchronized PageManager getInstance() {
@@ -16,14 +18,10 @@ public class PageManager {
 
     public void closeDriver() {
         this.pageGenerator.driver.close();
-        this.pageGenerator.driver.quit();
     }
 
     public void initialisePageGenerator() {
         this.pageGenerator = new PageGenerator(new DriverSupplier().supplyValue());
     }
 
-    public PageGenerator getPageGenerator() {
-        return this.pageGenerator;
-    }
 }
