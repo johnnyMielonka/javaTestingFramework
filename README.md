@@ -2,9 +2,9 @@
 
 ## Overview
 An example Java project for test automation purpose.
-Main purpose is to gather couple of commonly used code snippets under one hood.
+Main purpose is to gather a couple of commonly used code snippets under one hood.
 
-Implemented Selenium/WebDriver + Behave for BDD support. 
+Implemented Selenium/WebDriver + Cucumber for BDD support. 
 Supports configuration profiles - resources/<envName>.properties.
 
 ## Execution
