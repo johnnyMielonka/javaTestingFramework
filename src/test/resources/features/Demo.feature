@@ -29,6 +29,7 @@ Feature: Testing Aurora Commerce
       | Jewellery     |
       | Shoes         |
       | Sale          |
+      | failMe        |
 
   @login
   Scenario Outline: NEGATIVE - verify error popup for invalid user/password: <user> / <password>
