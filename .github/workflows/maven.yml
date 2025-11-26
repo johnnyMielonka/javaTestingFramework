@@ -12,7 +12,7 @@ on:
   workflow_dispatch:
       inputs:
         profile:
-          description: 'Profile'
+          description: 'Profile to run with'
           required: true
           default: 'auroracommerce'
 
@@ -30,4 +30,4 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Build with Maven
-      run: mvn -B package --file pom.xml -DtestEnv="${{ profile }}"
+      run: mvn -B package --file pom.xml -DtestEnv="${{ inputs.profile }}"
