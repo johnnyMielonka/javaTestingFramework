@@ -2,13 +2,16 @@ package com.automation.pages.pageObjects.Interview;
 
 import com.automation.helpers.ServiceUrlProvider;
 import com.automation.pages.BasePage;
+import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
+@Slf4j
 public class AuroraCommonPage extends BasePage {
+
     @FindBy(how = How.XPATH, using = "//div[@class='template_breadcrumb']")
     private WebElement labelBreadcrumb;
 
@@ -20,10 +23,12 @@ public class AuroraCommonPage extends BasePage {
     }
 
     public void openServiceUrl() {
+        log.info("Running url {}",ServiceUrlProvider.getServiceUrl() );
         super.openUrl(ServiceUrlProvider.getServiceUrl());
     }
 
     public AuroraCommonPage clickOnManuBarItem(String elementName) {
+        log.info("Clicking on genericMenuBarItem {}",elementName);
         super.click(By.xpath(String.format(genericMenuBarItem, elementName)));
         return this;
     }
