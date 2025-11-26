@@ -7,11 +7,10 @@ import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.assertj.core.api.Assertions;
 import org.assertj.core.api.SoftAssertions;
 
 import java.util.List;
-
-import static org.junit.Assert.assertEquals;
 
 public class AuroraCommonPageStepDef {
     private final PageGenerator pageGenerator = PageManager.getInstance().getPageGenerator();
@@ -30,9 +29,9 @@ public class AuroraCommonPageStepDef {
 
     @Then("Verify page title is {string}")
     public void verifyPageTitle(String expectedName) {
-        assertEquals("Page name different then expected",
-                expectedName.toLowerCase(),
-                mainPage.getPageName().toLowerCase());
+        Assertions.assertThat(mainPage.getPageName().toLowerCase())
+                .isEqualTo(expectedName.toLowerCase())
+                .as("Page name different then expected");
     }
 
     @Then("Verify page title is {string} with uppercases")

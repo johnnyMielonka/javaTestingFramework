@@ -7,9 +7,7 @@ import com.automation.pages.pageObjects.Interview.AuroraLoginPage;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import org.assertj.core.api.Assertions;
 
 public class AuroraLoginPageStepDef {
     private final PageGenerator pageGenerator = PageManager.getInstance().getPageGenerator();
@@ -30,13 +28,14 @@ public class AuroraLoginPageStepDef {
 
     @Then("Verify if error popup is visible")
     public void verifyErrorPopupIsVisible() {
-        assertTrue("No error is visible", mainPage.isErrorPopupVisible());
+        Assertions.assertThat(mainPage.isErrorPopupVisible())
+                .isEqualTo(true)
+                .as("No error is visible");
     }
 
     @Then("Verify error popup exist with text:")
     public void verifyErrorPopupHasText(String expectedErrorText) {
-        assertEquals(
-                expectedErrorText.toLowerCase(),
-                mainPage.getErrorPopupText().toLowerCase());
+        Assertions.assertThat(mainPage.getErrorPopupText().toLowerCase())
+                .isEqualTo(expectedErrorText.toLowerCase());
     }
 }

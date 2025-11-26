@@ -29,6 +29,7 @@ public class apiStepDef {
 
     @Then("Verify response code is {int}")
     public void verifyResponseCode(int expectedResponseCode) {
-        assertEquals(expectedResponseCode, endpointCall.getStatusCode());
+        Assertions.assertThat(endpointCall.getStatusCode())
+                .isEqualTo(expectedResponseCode);
     }
 }
