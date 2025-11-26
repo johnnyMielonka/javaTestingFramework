@@ -15,7 +15,11 @@ on:
           description: 'Profile to run with'
           required: true
           default: 'auroracommerce'
-
+        tags:
+          description: 'Test Tag or tags [@all @gui @demo @menubar]'
+          required: false
+          default: '@all'
+          
 jobs:
   build:
 
@@ -30,7 +34,7 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Build with Maven
-      run: mvn test -DtestEnv="${{ inputs.profile }}"
+      run: mvn test -DtestEnv="${{ inputs.profile }}" -Dcucumber.filter.tags="${{ inputs.tag/s }}"
     - name: Upload Cucumber Report
       uses: actions/upload-artifact@v4
       with:
