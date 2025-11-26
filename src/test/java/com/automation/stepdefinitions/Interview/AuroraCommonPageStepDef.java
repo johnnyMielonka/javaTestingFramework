@@ -16,7 +16,7 @@ import static org.junit.Assert.assertEquals;
 public class AuroraCommonPageStepDef {
     private final PageGenerator pageGenerator = PageManager.getInstance().getPageGenerator();
     private final AuroraCommonPage mainPage = pageGenerator.getInstance(AuroraCommonPage.class);
-    private final SoftAssertions softAssertions = new SoftAssertions();
+
 
     @Given("Open Aurora web page")
     public void startingPoint() {
@@ -42,10 +42,10 @@ public class AuroraCommonPageStepDef {
 
     @Then("Verify Menu Bar contains following items:")
     public void sofAssertionExample(DataTable inputTable) {
+        SoftAssertions softAssertions = new SoftAssertions();
         for (List<String> row : inputTable.asLists()) {
             softAssertions.assertThat(mainPage.checkMenuBarItemVisible(row.get(0))).isEqualTo(row.get(0));
         }
         softAssertions.assertAll();
     }
-
 }
