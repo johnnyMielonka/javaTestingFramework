@@ -1,18 +1,16 @@
 package com.automation.stepdefinitions;
 
 import com.automation.core.DriverFactory.PageManager;
-import com.automation.helpers.TestContext;
 import com.automation.pages.PageGenerator;
 import com.automation.pages.pageObjects.GenericPage;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.assertj.core.api.Assertions;
 import org.assertj.core.api.SoftAssertions;
 
 import java.util.List;
-
-import static org.junit.Assert.assertEquals;
 
 public class guiStepDef {
     private final PageGenerator pageGenerator = PageManager.getInstance().getPageGenerator();
@@ -29,12 +27,12 @@ public class guiStepDef {
     public void step(String scenario, String file) throws InterruptedException {
         Thread.sleep(2000);
         System.out.format("Thread ID - %2d - %s from %s feature file.\n",
-                Thread.currentThread().getId(), scenario, file);
+                Thread.currentThread().threadId(), scenario, file);
     }
 
     @When("Continuation {string}")
     public void continuation(String value) throws InterruptedException {
-        Thread.sleep(Integer.valueOf(value) * 1000);
+        Thread.sleep(Integer.parseInt(value) * 1000L);
         this.genericPage.externalCall(value);
     }
     @When("Save {string} to context TEMP")
@@ -50,7 +48,8 @@ public class guiStepDef {
         softAssertions.assertAll();
     }
     @Then("Verify if context TEMP has {string} value")
-    public void contextCehckExample(String expectedValue){
-        assertEquals(expectedValue, genericPage.getFromContextTemp());
+    public void contextCheckExample(String expectedValue){
+        Assertions.assertThat(genericPage.getFromContextTemp())
+                .isEqualTo(expectedValue);
     }
 }

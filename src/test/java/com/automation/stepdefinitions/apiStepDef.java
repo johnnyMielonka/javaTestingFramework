@@ -4,9 +4,10 @@ import com.automation.api.endpoints.EndpointCall;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import lombok.extern.slf4j.Slf4j;
+import org.assertj.core.api.Assertions;
 
-import static org.junit.Assert.assertEquals;
-
+@Slf4j
 public class apiStepDef {
 
     private final EndpointCall endpointCall = new EndpointCall();
@@ -24,11 +25,12 @@ public class apiStepDef {
 
     @When("Print response body")
     public void printResponse() {
-        System.out.print(endpointCall.getResponseBody());
+        log.info(endpointCall.getResponseBody());
     }
 
     @Then("Verify response code is {int}")
     public void verifyResponseCode(int expectedResponseCode) {
-        assertEquals(expectedResponseCode, endpointCall.getStatusCode());
+        Assertions.assertThat(endpointCall.getStatusCode())
+                .isEqualTo(expectedResponseCode);
     }
 }

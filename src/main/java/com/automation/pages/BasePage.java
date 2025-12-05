@@ -10,8 +10,8 @@ import java.time.Duration;
 
 public class BasePage extends PageGenerator {
     public static final int PAGE_LOAD_TIMEOUT = 15;
-    public static final int WAIT_TIMEOUT = 10;
-    public static final int WAIT_POLLING = 1;
+    public static final int WAIT_TIMEOUT = 20;
+    public static final int WAIT_POLLING = 500;
 
     protected BasePage(WebDriver driver) {
         super(driver);
@@ -38,7 +38,7 @@ public class BasePage extends PageGenerator {
     }
 
     protected FluentWait<WebDriver> waitUntil() {
-        return this.waitUntil(Duration.ofSeconds(WAIT_TIMEOUT), Duration.ofSeconds(WAIT_POLLING));
+        return this.waitUntil(Duration.ofSeconds(WAIT_TIMEOUT), Duration.ofMillis(WAIT_POLLING));
     }
 
     protected void click(By element) {
@@ -65,4 +65,8 @@ public class BasePage extends PageGenerator {
         return !super.driver.findElements(element).isEmpty();
     }
 
+    protected WebElement getElementByText(String xPath, String... text) {
+        this.waitUntil().until(ExpectedConditions.presenceOfElementLocated(By.xpath(String.format(xPath,text))));
+        return driver.findElement(By.xpath(String.format(xPath, text)));
+    }
 }

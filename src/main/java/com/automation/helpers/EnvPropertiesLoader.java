@@ -8,12 +8,13 @@ Desired environment is given as a runtime parameter: mvn -DtestEnv=env.
 If no parameter is given , default value is test.
  */
 public class EnvPropertiesLoader {
-    private static final String ENV = System.getProperty("testEnv","test");
+    private static final String DIR = "profiles/";
+    private static final String ENV = System.getProperty("testEnv", "test");
     private static Properties properties;
 
-    public static Properties getProperties(){
-        if (properties== null){
-            properties = PropertiesLoader.readProperties(ENV+".properties");
+    public static Properties getProperties() {
+        if (properties == null) {
+            properties = PropertiesLoader.readProperties(DIR + ENV + ".properties");
         }
         return properties;
     }

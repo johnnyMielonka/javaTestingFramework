@@ -23,12 +23,12 @@ public class AuroraCommonPage extends BasePage {
     }
 
     public void openServiceUrl() {
-        log.info("Running url {}",ServiceUrlProvider.getServiceUrl() );
+        log.debug("Running url {}",ServiceUrlProvider.getServiceUrl() );
         super.openUrl(ServiceUrlProvider.getServiceUrl());
     }
 
     public AuroraCommonPage clickOnManuBarItem(String elementName) {
-        log.info("Clicking on genericMenuBarItem {}",elementName);
+        log.debug("Clicking on genericMenuBarItem {}",elementName);
         super.click(By.xpath(String.format(genericMenuBarItem, elementName)));
         return this;
     }
