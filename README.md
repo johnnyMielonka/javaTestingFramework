@@ -9,7 +9,7 @@ Supports configuration profiles - resources/<envName>.properties.
 
 ## Execution
 ### Env profile config under
-> resources / <testEnv>.properties
+> resources / < testEnv >.properties
 
 ### Env profile set in POM under (default test) 
 > maven-surefire-plugin / systemPropertyVariables / **testEnv**
